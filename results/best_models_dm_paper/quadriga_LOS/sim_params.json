@@ -1,0 +1,99 @@
+{
+    "data_dict": {
+        "bin_dir": "./bin",
+        "num_train_samples": 100000,
+        "num_val_samples": 10000,
+        "num_test_samples": 10000,
+        "train_dataset": "quadriga_LOS",
+        "test_dataset": "quadriga_LOS",
+        "n_antennas": 64,
+        "mode": "2D",
+        "data_shape": [
+            2,
+            64,
+            16
+        ],
+        "complex_data": true
+    },
+    "diff_model_dict": {
+        "data_shape": [
+            2,
+            64,
+            16
+        ],
+        "complex_data": true,
+        "loss_type": "l2",
+        "which_schedule": "linear",
+        "num_timesteps": 100,
+        "beta_start": 9.999000099991662e-05,
+        "beta_end": 0.1,
+        "objective": "pred_noise",
+        "loss_weighting": false,
+        "clipping": false,
+        "reverse_method": "reverse_mean",
+        "reverse_add_random": false
+    },
+    "unet_dict": {
+        "data_shape": [
+            2,
+            64,
+            16
+        ],
+        "n_layers_pre": 2,
+        "n_layers_post": 3,
+        "ch_layers_pre": [
+            2,
+            32,
+            64
+        ],
+        "ch_layers_post": [
+            64,
+            43,
+            22,
+            2
+        ],
+        "n_layers_time": 1,
+        "ch_init_time": 16,
+        "kernel_size": [
+            3,
+            3
+        ],
+        "mode": "2D",
+        "batch_norm": false,
+        "downsamp_fac": 1,
+        "device": "cuda:1"
+    },
+    "trainer_dict": {
+        "batch_size": 128,
+        "lr_init": 0.0001,
+        "lr_step_multiplier": 1.0,
+        "epochs_until_lr_step": 150,
+        "num_epochs": 500,
+        "val_every_n_batches": 2000,
+        "track_val_loss": true,
+        "track_fid_score": false,
+        "track_mmd": false,
+        "use_fixed_gen_noise": true,
+        "save_mode": "best",
+        "mode": "2D",
+        "dir_result": "./results/2024-02-05-09h16m31s",
+        "use_ray": false,
+        "complex_data": true,
+        "num_min_epochs": 50,
+        "num_epochs_no_improve": 20,
+        "fft_pre": true
+    },
+    "tester_dict": {
+        "batch_size": 512,
+        "criteria": [
+            "nmse"
+        ],
+        "complex_data": true,
+        "return_all_timesteps": false,
+        "fft_pre": true,
+        "mode": "2D"
+    },
+    "misc_dict": {
+        "num_parameters": 55025
+    }
+}

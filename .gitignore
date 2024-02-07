@@ -1,0 +1,14 @@
+# directories
+.idea/
+.ipynb_checkpoints/
+__pycache__/
+tmp/
+bin/*
+
+results/*
+!results/best_models_dm_paper/
+
+# files
+sync_files
+exclude_sync.txt
+**.DS_Store
