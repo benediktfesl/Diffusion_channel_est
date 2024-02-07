@@ -1,7 +1,6 @@
 import math
 import os
 import os.path as path
-import time
 import warnings
 from functools import partial
 from typing import Tuple, Union, Dict
@@ -12,10 +11,7 @@ from pytorch_fid.inception import InceptionV3
 from torch import nn
 from torch.utils.data import DataLoader
 from modules import utils as ut
-
 from tqdm.auto import tqdm
-from ray import air
-from ray.air import session
 
 from DMCE import utils, networks, functional
 
@@ -847,25 +843,6 @@ class Trainer(object):
         else:
             raise NotImplementedError(self.save_mode)
 
-    def create_ray_checkpoint(self, **metrics):
-        """
-        creates a Ray AIR Checkpoint instance from a dictionary with all the information regarding the training procedure
-
-        Parameters
-        ----------
-        metrics : dict
-            dictionary of metrics that are evaluated during validation
-
-        Returns
-        -------
-        checkpoint: Checkpoint
-            a checkpoint object with necessary information about training procedure which is used to report to the ray
-            AIR session.
-        """
-
-        new_dict = self.get_checkpoint_dict(**metrics)
-        return air.checkpoint.Checkpoint.from_dict(new_dict)
-
     def load_model(self, checkpoint: int = None, filepath: str = None):
         """
         Loads parameters and whole models from a .pt file stored with method 'save_model()', intended for public use.
@@ -970,12 +947,8 @@ class Trainer(object):
             metrics.update({'val_loss': val_loss}) if self.track_val_loss else None
             metrics.update({'fid_score': fid_score}) if self.track_fid_score else None
             metrics.update({'mmd': mmd}) if self.track_mmd else None
-            if self.use_ray:
-                ray_checkpoint = self.create_ray_checkpoint(**metrics)
-                session.report(metrics=metrics, checkpoint=ray_checkpoint)
-            else:
-                self.save_model(**metrics)
-                self.print_validation_msg(**metrics)
+            self.save_model(**metrics)
+            self.print_validation_msg(**metrics)
         self.model.train()
         torch.cuda.empty_cache()
         return val_loss, fid_score, mmd

@@ -1,0 +1,22 @@
+name: dmce
+channels:
+  - conda-forge
+  - anaconda
+  - pytorch
+  - nvidia
+  - defaults
+dependencies:
+  - anaconda::python=3.10.9
+  - conda-forge::cudatoolkit=11.8
+  - pytorch::pytorch=2.0.1
+  - pytorch-cuda=11.8
+  - pytorch::torchvision=0.15.2=py310_cu118
+  - anaconda::conda-build
+  - anaconda::matplotlib
+  - anaconda::numpy
+  - anaconda::scipy
+  - anaconda::scikit-learn
+  - anaconda::tqdm
+  - anaconda::pip
+  - pip:
+    - pytorch-fid==0.3.*
