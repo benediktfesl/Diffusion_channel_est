@@ -21,3 +21,5 @@ python diff_cnn.py -d cuda:0
 ```
 python baselines.py
 ```
+
+The code is based on the implementation of https://github.com/benediktfesl/Diffusion_MSE.
