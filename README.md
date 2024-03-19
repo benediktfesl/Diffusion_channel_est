@@ -1,5 +1,9 @@
 # Diffusion-based Channel Estimation 
-Source code of the paper "Diffusion-Based Generative Prior for Low-Complexity MIMO Channel Estimation".
+Source code of the paper 
+>B. Fesl, M. Baur, F. Strasser, M. Joham, and W. Utschick,
+>"Diffusion-Based Generative Prior for Low-Complexity MIMO Channel Estimation," 2024, arXiv preprint: 2403.03545.
+<br>
+Link to the paper: https://arxiv.org/abs/2403.03545
 
 ## Requirements
 The code is tested with `Python 3.10` and `Pytorch 2.1.1`. For further details, see `environment.yml`.
