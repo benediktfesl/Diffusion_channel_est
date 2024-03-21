@@ -1,8 +1,6 @@
 import numpy as np
 import torch
 import h5py
-from research_algorithms.SCM3GPP.SCMMulti import SCMMulti
-from research_algorithms.SCM3GPP.SCMMulti_MIMO import SCMMulti as SCMMulti_MIMO
 
 
 def crandn(*arg, rng=np.random.default_rng()):
@@ -31,21 +29,17 @@ def load_or_create_data(ch_type='3gpp', n_path=1, n_antennas_rx=64, n_antennas_t
             channels = h5py.File(
                 f'bin/120000UEs_500m_1x{n_antennas_rx}BS_1x{n_antennas_tx}MS_1carr_1symb_diff=0_{ch_type}.mat', 'r')
         channels = channels['H_all']
-        #channels = channels['chan']
         channels = np.array(channels)
         channels = np.transpose(channels['real'] + channels['imag'] * 1j)
         channels_train = channels[:n_train_ch]
         channels_test = channels[n_train_ch:n_train_ch + n_test_ch]
         channels_val = channels[n_train_ch + n_test_ch:n_train_ch + n_test_ch + n_val_ch]
-        #test = np.sum(np.abs(channels)**2) / channels.size
         print('done.')
         if return_toep:
             return channels_train, None, channels_val, None, channels_test, None
         else:
             return channels_train, channels_val, channels_test
     else:
-        path_sigma = 2.0
-        path_sigma_MS = 35
         if n_antennas_tx == 1:
             file_name_train = f'bin/{ch_type}_path={n_path}_dim={n_antennas_rx}_samp={n_train_ch}_train.npy'
             file_name_val = f'bin/{ch_type}_path={n_path}_dim={n_antennas_rx}_samp={n_val_ch}_val.npy'
@@ -55,21 +49,7 @@ def load_or_create_data(ch_type='3gpp', n_path=1, n_antennas_rx=64, n_antennas_t
                 data_val, toep_val = np.load(file_name_val)
                 data_test, toep_test = np.load(file_name_test)
             except FileNotFoundError:
-                channel_scm = SCMMulti(path_sigma=path_sigma, n_path=n_path)
-                rng = np.random.default_rng(np.random.randint(1e9))
-                channels, toep = channel_scm.generate_channel(n_channels, 1, n_antennas_rx, rng)
-                channels = np.squeeze(channels)
-                if len(channels.shape) == 1:
-                    channels = np.expand_dims(channels, 1)
-                data_train = channels[:n_train_ch]
-                data_test = channels[n_train_ch:n_train_ch + n_test_ch]
-                data_val = channels[n_train_ch + n_test_ch:n_train_ch + n_test_ch + n_val_ch]
-                toep_train = toep[:n_train_ch]
-                toep_test = toep[n_train_ch:n_train_ch + n_test_ch]
-                toep_val = toep[n_train_ch + n_test_ch:n_train_ch + n_test_ch + n_val_ch]
-                np.save(file_name_train, (data_train, toep_train))
-                np.save(file_name_test, (data_test, toep_test))
-                np.save(file_name_val, (data_val, toep_val))
+                print('Dataset not found.')
         else:
             file_name_train = f'bin/{ch_type}_path={n_path}_dimrx={n_antennas_rx}_dimtx={n_antennas_tx}_samp={n_train_ch}_train.npy'
             file_name_val = f'bin/{ch_type}_path={n_path}_dimrx={n_antennas_rx}_dimtx={n_antennas_tx}_samp={n_val_ch}_val.npy'
@@ -94,28 +74,7 @@ def load_or_create_data(ch_type='3gpp', n_path=1, n_antennas_rx=64, n_antennas_t
                 toep_test = (toep_test_rx, toep_test_tx)
                 toep_val = (toep_val_rx, toep_val_tx)
             except FileNotFoundError:
-                channel_scm = SCMMulti_MIMO(path_sigma_BS=2.0, path_sigma_MS=path_sigma_MS, n_path=n_path)
-                rng = np.random.default_rng(np.random.randint(1e9))
-                channels, toep_rx, toep_tx = channel_scm.generate_channel(n_channels, 1, n_antennas_rx, n_antennas_tx, rng)
-                channels = np.squeeze(channels)
-                toep_train_rx = toep_rx[:n_train_ch]
-                toep_test_rx = toep_rx[n_train_ch:n_train_ch+n_test_ch]
-                toep_val_rx = toep_rx[n_train_ch+n_test_ch:n_train_ch+n_test_ch+n_val_ch]
-                toep_train_tx = toep_tx[:n_train_ch]
-                toep_test_tx = toep_tx[n_train_ch:n_train_ch+n_test_ch]
-                toep_val_tx = toep_tx[n_train_ch+n_test_ch:n_train_ch+n_test_ch+n_val_ch]
-                data_train = channels[:n_train_ch]
-                data_test = channels[n_train_ch:n_train_ch + n_test_ch]
-                data_val = channels[n_train_ch + n_test_ch:n_train_ch + n_test_ch + n_val_ch]
-                np.save(file_name_train, data_train)
-                np.save(file_name_test, data_test)
-                np.save(file_name_val, data_val)
-                np.save(file_name_train_toeptx, toep_train_tx)
-                np.save(file_name_test_toeptx, toep_test_tx)
-                np.save(file_name_val_toeptx, toep_val_tx)
-                np.save(file_name_train_toeprx, toep_train_rx)
-                np.save(file_name_test_toeprx, toep_test_rx)
-                np.save(file_name_val_toeprx, toep_val_rx)
+                print('Dataset not found.')
         if return_toep:
             return data_train, toep_train, data_val, toep_val, data_test, toep_test
         else:

@@ -1,7 +1,5 @@
 import numpy as np
 from modules.utils import toeplitz
-from scipy import linalg as scilin
-from research_algorithms import utils as ut
 
 
 def mp_eval(obj, y, toep, genie, A=None):
