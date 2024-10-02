@@ -1,7 +1,7 @@
 # Diffusion-based Channel Estimation 
 Source code of the paper 
 >B. Fesl, M. Baur, F. Strasser, M. Joham, and W. Utschick,
->"Diffusion-Based Generative Prior for Low-Complexity MIMO Channel Estimation," 2024, arXiv preprint: 2403.03545.
+>"Diffusion-Based Generative Prior for Low-Complexity MIMO Channel Estimation," in IEEE Wireless Communications Letters, 2024, arXiv preprint: 2403.03545.
 <br>
 Link to the paper: https://arxiv.org/abs/2403.03545
 
