@@ -1,9 +1,9 @@
 # Diffusion-based Channel Estimation 
 Source code of the paper 
 >B. Fesl, M. Baur, F. Strasser, M. Joham, and W. Utschick,
->"Diffusion-Based Generative Prior for Low-Complexity MIMO Channel Estimation," in IEEE Wireless Communications Letters, 2024, arXiv preprint: 2403.03545.
+>"Diffusion-Based Generative Prior for Low-Complexity MIMO Channel Estimation," in IEEE Wireless Communications Letters, 2024.
 <br>
-Link to the paper: https://arxiv.org/abs/2403.03545
+Link to the paper: https://ieeexplore.ieee.org/document/10705115
 
 ## Abstract
 This work proposes a novel channel estimator based on diffusion models (DMs), one of the currently top-rated generative models. Contrary to related works utilizing generative priors, a lightweight convolutional neural network (CNN) with positional embedding of the signal-to-noise ratio (SNR) information is designed by learning the channel distribution in the sparse angular domain. Combined with an estimation strategy that avoids stochastic resampling and truncates reverse diffusion steps that account for lower SNR than the given pilot observation, the resulting DM estimator has both low complexity and memory overhead. Numerical results exhibit better performance than state-of-the-art channel estimators utilizing generative priors. 
