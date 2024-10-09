@@ -1,4 +1,4 @@
-# Diffusion-based Channel Estimation 
+# Diffusion-Based Channel Estimation 
 Source code of the paper 
 >B. Fesl, M. Baur, F. Strasser, M. Joham, and W. Utschick,
 >"Diffusion-Based Generative Prior for Low-Complexity MIMO Channel Estimation," in IEEE Wireless Communications Letters, 2024.
