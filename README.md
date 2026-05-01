@@ -4,11 +4,11 @@ Source code of the paper
 >"Diffusion-Based Generative Prior for Low-Complexity MIMO Channel Estimation," in IEEE Wireless Communications Letters, 2024.
 <br>
 Link to the paper: https://ieeexplore.ieee.org/document/10705115
+<br>
+ArXiv: https://arxiv.org/abs/2403.03545
 
 ## Abstract
-This letter proposes a novel channel estimator based on diffusion models (DMs), one of the currently top-rated generative models, with provable convergence to the mean square error (MSE)-optimal estimator. A lightweight convolutional neural network (CNN) with positional embedding of the signal-to-noise ratio (SNR) information is designed to learn the channel distribution in the sparse angular domain. Combined
-with an estimation strategy that avoids stochastic resampling and truncates reverse diffusion steps that account for lower SNR than the given pilot observation, the resulting DM estimator unifies low complexity and memory overhead. Numerical results exhibit
-better performance than state-of-the-art estimators.
+This letter proposes a novel channel estimator based on diffusion models (DMs), one of the currently top-rated generative models, with provable convergence to the mean square error (MSE)-optimal estimator. A lightweight convolutional neural network (CNN) with positional embedding of the signal-to-noise ratio (SNR) information is designed to learn the channel distribution in the sparse angular domain. Combined with an estimation strategy that avoids stochastic resampling and truncates reverse diffusion steps that account for lower SNR than the given pilot observation, the resulting DM estimator unifies low complexity and memory overhead. Numerical results exhibit better performance than state-of-the-art estimators.
 
 ## Requirements
 The code is tested with `Python 3.10` and `Pytorch 2.1.1`. For further details, see `environment.yml`.
