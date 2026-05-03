@@ -4,8 +4,7 @@ Source code of the paper
 >B. Fesl, M. Baur, F. Strasser, M. Joham, and W. Utschick,
 >"Diffusion-Based Generative Prior for Low-Complexity MIMO Channel Estimation," in IEEE Wireless Communications Letters, 2024.
 
-Link to the paper: https://ieeexplore.ieee.org/document/10705115  
-ArXiv: https://arxiv.org/abs/2403.03545
+[[IEEE](https://ieeexplore.ieee.org/document/10705115)] [[arXiv](https://arxiv.org/abs/2403.03545)]
 
 ---
 
@@ -23,8 +22,7 @@ A standalone implementation of the DMSE scheduler is available as a separate pac
 pip install diffusers-dmse
 ```
 
-- PyPI: https://pypi.org/project/diffusers-dmse/
-- Source: https://github.com/benediktfesl/diffusers-MSEopt
+[[PyPI](https://pypi.org/project/diffusers-dmse/)] [[GitHub](https://github.com/benediktfesl/diffusers-dmse)]
 
 This repository contains an application-specific implementation. The standalone package provides a reusable and diffusers-compatible version of the scheduler.
 
