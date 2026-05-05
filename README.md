@@ -62,4 +62,4 @@ python baselines.py
 ## Related repositories
 
 - https://github.com/benediktfesl/Diffusion_MSE
-- https://github.com/benediktfesl/diffusers-MSEopt
+- https://github.com/benediktfesl/diffusers-dmse
