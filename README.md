@@ -36,24 +36,24 @@ The code is tested with `Python 3.10` and `Pytorch 2.1.1`. For further details, 
 
 ## Instructions
 
-1. Load channel data from  
-   https://syncandshare.lrz.de/getlink/fi93y1AnwmsvHrAGNqq5zX/  
-   (password: Diffusion2024)  
-   and move it into folder `bin`.
+1. Download the channel dataset from Zenodo:  
+   [https://zenodo.org/records/20737830](https://zenodo.org/records/20737830)
 
-2. To evaluate the pre-trained models used for the plots in the paper, run:
+2. Extract the downloaded archive and move the extracted folder `bin` into the repository root.
+
+3. To evaluate the pre-trained models used for the plots in the paper, run:
 
 ```
 python load_and_eval_dm.py -d cuda:0
 ```
 
-3. To train a DM from scratch and evaluate the performance afterward, run:
+4. To train a DM from scratch and evaluate the performance afterward, run:
 
 ```
 python diff_cnn.py -d cuda:0
 ```
 
-4. To evaluate the baseline estimators, run:
+5. To evaluate the baseline estimators, run:
 
 ```
 python baselines.py
